@@ -33,7 +33,7 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h6>Categories</h6>
                             </a>
-                            <ul class="dropdown-menu border-1 border-dark p-2">
+                            <ul class="dropdown-menu border-1 border-dark p-2 bg-white">
                                 <li>
                                     <a class="dropdown-item" href="./acoustic.php">Acoustic</a>
                                 </li>

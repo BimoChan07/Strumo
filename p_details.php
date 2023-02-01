@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>KisanArea | Product Info</title>
+	<title>Strumo | Product Info</title>
 	<!-- Website Logo-->
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto:wght@300;400;700&display=auto" rel="stylesheet" />
@@ -77,61 +77,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 							</div>
 							<form method="POST" action="./addtocart.php">
-								<h1 class="mb-1 fs-2 fw-bold"><?php echo $product['name']; ?></h1>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="fs-4 m-0">Rs.&nbsp;<?php echo $product['price']; ?></p>
-								</div>
+								<h1 class="mb-3	 fs-2 fw-bold"><?php echo $product['name']; ?></h1>
+
 
 								<!-- Product Accordion -->
 								<div class="accordion" id="accordionProduct">
 									<div class="accordion-item">
-										<h2 class="accordion-header" id="headingOne">
-											<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-												Product Details
-											</button>
-										</h2>
+										<!-- <h1 class="accordion-header" id="headingOne"> -->
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											<h5>Product Details</h5>
+										</button>
+
 										<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionProduct">
 											<div class="accordion-body">
+												<p class="fs-4 m-0">Rs.&nbsp;<?php echo $product['price']; ?></p>
+
 												<p class="m-0"><?php echo $product['description'] ?></p>
 											</div>
-										</div>
-										<div class="text-center Reveal-block-body">
-											<?php if ($product['stock'] == 0) {
-												echo '<h5 class="mb-2 text-danger">Out of Stock</h5>';
-											} else {
-												echo '<h5 class="mb-2 mt-2 text-success">Available stock: ' . $product['stock'];
-												'</h5>';
-											}
-											?>
+											<div class="text-center Reveal-block-body">
+												<?php if ($product['stock'] == 0) {
+													echo '<h5 class="mb-2 text-danger">Out of Stock</h5>';
+												} else {
+													echo '<h5 class="mb-2 mt-2 text-success">Available stock: ' . $product['stock'];
+													'</h5>';
+												}
+												?>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="text-center Reveal-block-body">
-									<?php
-									if (isset($_SESSION['username'])) {
-										if ($product['stock'] != 0) {
-											echo '<input type="number" name="Mod_Quantity" id="Mod_Quantity" class="form-control wrapper" required placeholder="Quantity">';
-										} else {
-											echo '<a href="./index.php" class="a d-flex justify-content-end">Go back</a>';
-										}
-									} ?>
-								</div>
-								<div>
-									<?php if (isset($_SESSION['username'])) {
-										if ($product['stock'] != 0) {
-											echo '<button type="submit" value="Add To Cart" name="Add_To_cart" class="btn btn-dark text-white w-100 m-auto">
+									<div class="text-center Reveal-block-body">
+										<?php
+										if (isset($_SESSION['username'])) {
+											if ($product['stock'] != 0) {
+												echo '<input type="number" name="Mod_Quantity" id="Mod_Quantity" class="form-control" required placeholder="Quantity">';
+											} else {
+												echo '<a href="./index.php" class="a d-flex justify-content-end">Go back</a>';
+											}
+										} ?>
+									</div>
+									<div class="d-flex justify-content-between mt-3	">
+										<?php if (isset($_SESSION['username'])) {
+											if ($product['stock'] != 0) {
+												echo '<button type="submit" value="Add To Cart" name="Add_To_cart" class="btn btn-dark text-white m-auto">
 										Add to cart
 									</button>';
-										}
-									} else {
-										echo
-										'<a href="./login.php" name="" class="btn btn-dark w-100">
+											}
+										} else {
+											echo
+											'<a href="./login.php" name="" class="btn btn-dark m-auto">
 										Please Login
 									</a>';
-									} ?>
-									<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
-									<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
-									<!-- / Product Accordion-->
+										} ?>
+										<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
+										<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+										<!-- / Product Accordion-->
+									</div>
 								</div>
 							</form>
 						</div>

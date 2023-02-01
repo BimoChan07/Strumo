@@ -42,7 +42,7 @@ include('./includes/dbconn.php');
         <h2 class="d-flex mt-2 text-dark font">YOUR SEARCH IS HERE</h2>
         <div class="card mt-4">
             <div class="card-body">
-                <table class="table table-bordered  border-dark">
+                <table class="table table-bordered border-rounded">
                     <thead>
                         <tr>
                             <th>Product Image</th>
@@ -58,7 +58,7 @@ include('./includes/dbconn.php');
                             $mysqli = mysqli_connect("localhost", "root", "", "strumo");
                             if (isset($_GET['search'])) {
                                 $filtervalues = $_GET['search'];
-                                $query = "SELECT * FROM products WHERE CONCAT(name) LIKE '%$filtervalues%' ";
+                                $query = "SELECT * FROM products WHERE CONCAT(name,brand,category) LIKE '%$filtervalues%' ";
                                 $query_run = mysqli_query($mysqli, $query);
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $featuredProd) {
