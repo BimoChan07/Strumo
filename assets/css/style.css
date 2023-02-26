@@ -91,7 +91,7 @@ h2 {
 }
 
 .font {
-    font-family: 'Lora', serif;
+    font-family: 'Trebuchet MS';
 }
 
 .zoom {
@@ -132,3 +132,27 @@ h2 {
     text-decoration-color: blue;
     color: blue;
 }
+
+#btn-eye {
+    justify-content: right;
+    display: none;
+    border: none;
+    background: none;
+    padding: 8px;
+    border-radius: 60%;
+    align-self: stretch;
+    font-size: 0.8em;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+/* #btn-eye {
+    border: none;
+    background: none;
+    background: none;
+    margin-top: 5px;
+    border-radius: 50%;
+    align-self: stretch;
+    font-size: 0.9em;
+} */

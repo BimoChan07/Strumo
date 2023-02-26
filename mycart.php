@@ -27,6 +27,9 @@ include("./includes/dbconn.php");
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" defer></script>
+    <script src="./assets/js/payInteg.js" defer></script>
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 </head>
 
 <body class="font">
@@ -110,11 +113,15 @@ include("./includes/dbconn.php");
                                     <?php echo $userinfo['address'] ?><input type="hidden" name="address" id="address" value="<?php echo $userinfo['address'] ?>" placeholder="Address" class="form-control border-success" required>
                                 </div>
                                 <div class="form-group mt-3 mb-3">
-                                    <input class="form-check-input border-success" checked type="radio" name="pay_mode" value="COD" id="flexRadioDefault1">
-                                    <b><label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
-                                        </label></b>
+                                    <!-- <input class="form-check-input border-success" checked type="radio" name="pay_mode" value="COD" id="flexRadioDefault1"> -->
+                                    <select name="pay_mode" required id="select" class="form-control">
+                                        <option value="">Select Payment Method</option>
+                                        <option value="COD">>Cash On Delivery</option>
+                                        <option value="khalti">Khalti</option>
+                                    </select>
+
                                 </div>
-                                <button class="btn btn-dark text-white m-auto d-flex justify-content-center" name="purchase">Purchase</button>
+                                <button class="btn btn-dark text-white m-auto d-flex justify-content-center" onclick="proceedPayment()" id="purchase" name="purchase">Purchase</button>
                             </form>
 
                         <?php

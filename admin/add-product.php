@@ -70,37 +70,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="../assets/css/bootstrap.css" />
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" />
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" />
-  <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
-  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" />
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css" />
-  <!-- BS Stepper -->
-  <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css" />
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css" />
+
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css" />
-  <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+
   <link rel="icon" type="image/x-icon" href="../assets/images/logos/webw.png" />
 
 </head>
 
-<body class="hold-transition sidebar-mini font">
+<body>
   <?php
   include '../includes/aside.php';
   ?>
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="container">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container d-flex justify-content-center">
@@ -191,21 +174,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="form-group col-md-12">
-              <input type="submit" value="ADD" name="submit_prod" id="submit" class="btn btn-dark text-white" />
-              <input type="reset" value="RESET" name="" id="submit" class="btn btn-secondary" />
+              <input type="submit" value="ADD" name="submit_prod" id="submit" class="btn bg-dark text-white" />
+              <input type="reset" value="RESET" name="" id="submit" class="btn bg-purple" />
             </div>
           </div>
-
         </form>
-        <!-- /.content-wrapper -->
-        <footer class="d-flex justify-content-center mt-5">
-          <strong>Copyright &copy; 2022
-            <a href="#">STRUMO</a>.</strong>
-        </footer>
       </div>
     </section>
   </div>
-
+  <?php
+  require '../includes/footer.php'; ?>
 </body>
 
 </html>

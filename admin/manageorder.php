@@ -9,7 +9,7 @@ include '../includes/dbconn.php';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Strumo | Manage User</title>
+    <title>Strumo | Manage Order</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -48,17 +48,17 @@ include '../includes/dbconn.php';
 
 
                 <?php
-                $q = mysqli_query($mysqli, "SELECT * FROM users");
+                $q = mysqli_query($mysqli, "SELECT * FROM orders");
                 $rr = mysqli_num_rows($q);
                 if (!$rr) {
                     echo "<h2 style='color:red'>No any user exists !!!</h2>";
                 } else {
                 ?>
                     <script>
-                        function DeleteUser(id) {
-                            if (confirm("Do you want to delete this user?")) {
-                                alert("User Deleted Successfully")
-                                window.location.href = "deleteUsr.php?id=" + id;
+                        function DeleteOrder(id) {
+                            if (confirm("Do you want to delete this order?")) {
+                                alert("Order Deleted Successfully")
+                                window.location.href = "deleteorder.php?id=" + id;
                             }
                         }
                     </script>
@@ -69,12 +69,14 @@ include '../includes/dbconn.php';
                     <table class="table table-hover table-bordered">
                         <Tr class="success">
                             <th>S.No</th>
-                            <th>User Name</th>
-                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Order id</th>
+                            <th>Ordered By</th>
                             <th>Address</th>
-                            <th>Contact</th>
-                            <th>Username</th>
-                            <th>Password</th>
+                            <th>Phone Number</th>
+                            <th>Payment Method</th>
                             <th>Delete</th>
                         </tr>
                         <?php
@@ -85,15 +87,17 @@ include '../includes/dbconn.php';
 
                             echo "<tr>";
                             echo "<td>" . $i . "</td>";
-                            echo "<td>" . $row['fullname'] . "</td>";
-                            echo "<td>" . $row['email'] . "</td>";
+                            echo "<td>" . $row['item_name'] . "</td>";
+                            echo "<td>" . $row['price'] . "</td>";
+                            echo "<td>" . $row['quantity'] . "</td>";
+                            echo "<td>" . $row['order_id'] . "</td>";
+                            echo "<td>" . $row['orderedby'] . "</td>";
                             echo "<td>" . $row['address'] . "</td>";
-                            echo "<td>" . $row['phone'] . "</td>";
-                            echo "<td>" . $row['username'] . "</td>";
-                            echo "<td>" . $row['password'] . "</td>";
+                            echo "<td>" . $row['phoneno'] . "</td>";
+                            echo "<td>" . $row['payment_mode'] . "</td>";
                         ?>
 
-                            <td><a href="javascript:DeleteUser('<?php echo $row['id']; ?>')" class="btn btn-danger">Delete</a></td>
+                            <td><a href="javascript:DeleteOrder('<?php echo $row['id']; ?>')" class="btn btn-danger">Delete</a></td>
                         <?php
                             echo "</tr>";
                             $i++;
@@ -108,6 +112,5 @@ include '../includes/dbconn.php';
     <?php
     require '../includes/footer.php'; ?>
 </body>
-
 
 </html>

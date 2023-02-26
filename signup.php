@@ -30,7 +30,8 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="./assets/js/login.js"></script>
     <!-- Fix for custom scrollbar if JS is disabled-->
     <noscript>
         <style>
@@ -88,7 +89,8 @@
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <input type="password" required name="password" id="password" placeholder="Password" class="form-control border-secondary" />
+                                    <input type="password" required name="password" id="password" placeholder="Password" class="form-control border-secondary" onfocus="toggleVisibility()" />
+                                    <button id="btn-eye" onclick="togglePassword()">Show</button>
                                 </div>
 
                                 <div class=" text-white form-group mt-3">
