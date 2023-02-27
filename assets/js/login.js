@@ -5,7 +5,7 @@ const toggleVisibility = () => {
         while (inputValue.length < 1) {
             return false;
         }
-        document.getElementById("btn-eye").style.display = "block";
+        document.getElementById("button-addon2").style.display = "block";
     });
 }
 
@@ -14,9 +14,9 @@ const togglePassword = () => {
     let inputType = document.getElementById("password").type;
     if (inputType != "password") {
         document.getElementById("password").type = "password";
-        document.getElementById("btn-eye").innerHTML = "Show";
+        document.getElementById("button-addon2").innerHTML = "Show";
     } else {
         document.getElementById("password").type = "text";
-        document.getElementById("btn-eye").innerHTML = "Hide";
+        document.getElementById("button-addon2").innerHTML = "Hide";
     }
 }

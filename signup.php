@@ -89,8 +89,12 @@
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <input type="password" required name="password" id="password" placeholder="Password" class="form-control border-secondary" onfocus="toggleVisibility()" />
-                                    <button id="btn-eye" onclick="togglePassword()">Show</button>
+                                    <div class="input-group mb-3">
+                                        <input type="password" class="form-control border-secondary" id="password" placeholder="Password" onfocus="toggleVisibility()" aria-label=" Recipient's username" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" onclick="togglePassword()" type=" button" id="button-addon2">Show</button>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class=" text-white form-group mt-3">

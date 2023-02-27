@@ -29,8 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")    //checking the server method is pos
           // $stmt = mysqli_prepare($mysqli, $query2);
 
           while ($product = mysqli_fetch_array($productDetail)) {
-            $query3 = "UPDATE products SET stock = ('$product[stock]'-'$value[Quantity]') WHERE name = '$pname'";
-            $stmt = mysqli_prepare($mysqli, $query3);
+            if ($product['stock'] >= $value['Quantity']) {
+              $query3 = "UPDATE products SET stock = ('$product[stock]'-'$value[Quantity]') WHERE name = '$pname'";
+              $stmt = mysqli_prepare($mysqli, $query3);
+            } else {
+              echo "<script>
+    alert('Insufficient Stock!!!');
+      window.location.href='./p_details.php';
+    </script>";
+            }
           }
           if ($stmt) {
             // mysqli_stmt_bind_param($stmt, $Order_Id, $Item_Name, $Price, $Quantity);       //binding the prepare statement with parameters '?''

@@ -34,6 +34,7 @@ include("./includes/dbconn.php");
 
 <body class="font">
     <?php
+
     include("./includes/header.php");
     ?>
     <div class="container">
@@ -56,9 +57,11 @@ include("./includes/dbconn.php");
                     </thead>
                     <tbody class="text-center">
                         <?php
+
                         $total = 0;
                         if (isset($_SESSION['cart'])) {
                             foreach ($_SESSION['cart'] as $key => $value) {
+
                                 $sr = $key + 1;
                                 echo "<tr>
                                 <td>$sr</td>
@@ -116,7 +119,7 @@ include("./includes/dbconn.php");
                                     <!-- <input class="form-check-input border-success" checked type="radio" name="pay_mode" value="COD" id="flexRadioDefault1"> -->
                                     <select name="pay_mode" required id="select" class="form-control">
                                         <option value="">Select Payment Method</option>
-                                        <option value="COD">>Cash On Delivery</option>
+                                        <option value="COD">Cash On Delivery</option>
                                         <option value="khalti">Khalti</option>
                                     </select>
 

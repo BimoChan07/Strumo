@@ -30,6 +30,8 @@ if (isset($login)) {
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="icon" type="image/x-icon" href="../assets/images/logos/webw.png" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script type="text/javascript" src="../assets/js/login.js"></script>
 
 <body class="bg-dark font">
 
@@ -60,12 +62,22 @@ if (isset($login)) {
                                         <label for="username" class="mb-1"><b>Username</label>
                                         <span class="text-danger">*</span></b> <input class="form-control mb-2 border-secondary" name="user" type="text" required placeholder="Username">
                                     </div>
-                                    <div class="form-group mb-2">
+                                    <!-- <div class="form-group mb-2">
                                         <label for="password" class="mb-1"><b>Password</label>
                                         <span class="text-danger">*</span></b>
                                         <input class="form-control mb-4 border-secondary" placeholder="Password" name="pass" type="password" required>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label for="password" class="mt-3">
+                                            <b>Password: <span class="text-danger">*</span></b>
+                                        </label>
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control border-secondary mb-4" name="pass" id="password" placeholder="Password" onfocus="toggleVisibility()" aria-label=" Recipient's username" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" onclick="togglePassword()" type=" button" id="button-addon2">Show</button>
+                                            </div>
+                                        </div>
                                     </div>
-
                                     <div class="form-group d-flex form-group justify-content-center mb-1">
                                         <input name="login" type="submit" value="Login" class="d-flex justify-content-between btn btn-dark text-white btn-block">
                                     </div>

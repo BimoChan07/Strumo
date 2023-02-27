@@ -133,15 +133,8 @@ h2 {
     color: blue;
 }
 
-#btn-eye {
+.btn-eye {
     justify-content: right;
-    display: none;
-    border: none;
-    background: none;
-    padding: 8px;
-    border-radius: 60%;
-    align-self: stretch;
-    font-size: 0.8em;
     cursor: pointer;
     overflow: hidden;
 }

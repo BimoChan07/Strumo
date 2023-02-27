@@ -78,8 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							</div>
 							<form method="POST" action="./addtocart.php">
 								<h1 class="mb-3	 fs-2 fw-bold"><?php echo $product['name']; ?></h1>
-
-
 								<!-- Product Accordion -->
 								<div class="accordion" id="accordionProduct">
 									<div class="accordion-item">
