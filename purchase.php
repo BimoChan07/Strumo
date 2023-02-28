@@ -45,10 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")    //checking the server method is pos
               mysqli_stmt_execute($stmt);
             }
             unset($_SESSION['cart']);
-            echo "<script>
-  alert('Order Placed');
-    window.location.href='./index.php';
-  </script>";
+            echo "Order Placed";
           } else {
 
             echo "<script>

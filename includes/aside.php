@@ -5,7 +5,7 @@
     <ul class="navbar-nav">
 
         <li class="nav-item d-none d-sm-inline-block hov">
-            <a href="./dashboard.phph" class="font nav-link text-white-50"> <i class="nav-icon fas fa-home"></i>
+            <a href="./dashboard.php" class="font nav-link text-white-50"> <i class="nav-icon fas fa-home"></i>
                 Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block hov">

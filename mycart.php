@@ -151,46 +151,54 @@ include("./includes/dbconn.php");
             }
         }
         btn.onclick = function(event) {
-            event.preventDefault();
-            const pay_mode = document.getElementById("select").value;
-            const address = document.getElementById("address").value;
             const form = document.getElementById("cart-form");
             const formdata = new FormData(form);
             const dataObject = {};
             formdata.forEach((value, key) => {
                 dataObject[key] = value;
             })
-
-            var config = {
-                "publicKey": "test_public_key_1059426c6e474dcd8aba71df6f39df8f",
-                "productIdentity": "rgfasdgse",
-                "productName": "354tfdff",
-                "productUrl": "http://localhost/products.php",
-                "paymentPreference": [
-                    "KHALTI",
-                ],
-                "eventHandler": {
-                    onSuccess(payload) {
-                        $.post("./purchase.php", dataObject, result => {
-                            if (result === 'Order Placed')
-                                alert(result);
-                            window.location.href = "../index.php";
-                        })
-                        console.log(payload)
-                    },
-                    onError(error) {
-                        console.log(error);
-                    },
-                    onClose() {
-                        console.log('widget is closing');
+            if (payment.value === "COD") {
+                event.preventDefault();
+                $.post("./purchase.php", dataObject, result => {
+                    if (result === 'Order Placed')
+                        alert("Order placed");
+                    window.location.href = "index.php";
+                })
+            } else {
+                event.preventDefault();
+                const pay_mode = document.getElementById("select").value;
+                const address = document.getElementById("address").value;
+                var config = {
+                    "publicKey": "test_public_key_1059426c6e474dcd8aba71df6f39df8f",
+                    "productIdentity": "rgfasdgse",
+                    "productName": "354tfdff",
+                    "productUrl": "http://localhost/products.php",
+                    "paymentPreference": [
+                        "KHALTI",
+                    ],
+                    "eventHandler": {
+                        onSuccess(payload) {
+                            $.post("./purchase.php", dataObject, result => {
+                                if (result === 'Order Placed')
+                                    alert(result);
+                                window.location.href = "index.php";
+                            })
+                            console.log(payload)
+                        },
+                        onError(error) {
+                            console.log(error);
+                        },
+                        onClose() {
+                            console.log('widget is closing');
+                        }
                     }
-                }
-            };
+                };
 
-            var checkout = new KhaltiCheckout(config);
-            checkout.show({
-                amount: 1000
-            })
+                var checkout = new KhaltiCheckout(config);
+                checkout.show({
+                    amount: 1000
+                })
+            }
         }
     </script>
     <?php
