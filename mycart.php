@@ -28,7 +28,7 @@ include("./includes/dbconn.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" defer></script>
-    <script src="./assets/js/payInteg.js" defer></script>
+    <script src="./assets/js/gt.js" defer></script>
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 </head>
 
@@ -102,7 +102,7 @@ include("./includes/dbconn.php");
                         ?>
                             <!--customer details for payment -->
 
-                            <form action="./purchase.php" method="POST" class="my-0" enctype="multipart/form-data">
+                            <form method="POST" class="my-0" enctype="multipart/form-data" id="cart-form">
                                 <div class="form-group mt-3 mb-3">
                                     <b><label>Username: </label></b>
                                     <?php echo $userinfo['fullname']; ?><input type="hidden" name="fullname" id="fullname" value="<?php echo $userinfo['fullname']; ?>" placeholder="Full Name" class="form-control border-success" required>
@@ -124,7 +124,7 @@ include("./includes/dbconn.php");
                                     </select>
 
                                 </div>
-                                <button class="btn btn-dark text-white m-auto d-flex justify-content-center" onclick="proceedPayment()" id="purchase" name="purchase">Purchase</button>
+                                <button class="btn btn-dark text-white m-auto d-flex justify-content-center" id="purchase" name="purchase">Purchase</button>
                             </form>
 
                         <?php
@@ -138,25 +138,60 @@ include("./includes/dbconn.php");
     </div>
 
     <!--for grand total of the items-->
-    <script type="text/javascript">
-        var gt = 0; //grand total
-        var iprice = document.getElementsByClassName('iprice');
-        var iquantity = document.getElementsByClassName('iquantity');
-        var itotal = document.getElementsByClassName('itotal');
-        var gtotal = document.getElementById('gtotal');
-
-        function subTotal() {
-            gt = 0;
-            for (i = 0; i < iprice.length; i++) {
-                itotal[i].innerText = (iprice[i].value) * (iquantity[i].value);
-                gt = gt + (iprice[i].value) * (iquantity[i].value);
-                /* price 650 quantity 1      gt=0+(650*1)
-                price 750 quantity 2          gt= 650+(750*2) === gt = 2150
-                price 850 quantity 1          gt= 2150+(850*1)=== gt = 3000 */
+    <script type="text/javascript" defer>
+        const btn = document.getElementById("purchase");
+        const payment = document.getElementById("select");
+        payment.onchange = function() {
+            if (payment.value === "khalti") {
+                btn.style.backgroundColor = "#5e338dff";
+                btn.innerHTML = "Pay with Khalti";
+            } else {
+                btn.style.backgroundColor = "black";
+                btn.innerHTML = "Purchase"
             }
-            gtotal.innerText = gt;
         }
-        subTotal();
+        btn.onclick = function(event) {
+            event.preventDefault();
+            const pay_mode = document.getElementById("select").value;
+            const address = document.getElementById("address").value;
+            const form = document.getElementById("cart-form");
+            const formdata = new FormData(form);
+            const dataObject = {};
+            formdata.forEach((value, key) => {
+                dataObject[key] = value;
+            })
+
+            var config = {
+                "publicKey": "test_public_key_1059426c6e474dcd8aba71df6f39df8f",
+                "productIdentity": "rgfasdgse",
+                "productName": "354tfdff",
+                "productUrl": "http://localhost/products.php",
+                "paymentPreference": [
+                    "KHALTI",
+                ],
+                "eventHandler": {
+                    onSuccess(payload) {
+                        $.post("./purchase.php", dataObject, result => {
+                            if (result === 'Order Placed')
+                                alert(result);
+                            window.location.href = "../index.php";
+                        })
+                        console.log(payload)
+                    },
+                    onError(error) {
+                        console.log(error);
+                    },
+                    onClose() {
+                        console.log('widget is closing');
+                    }
+                }
+            };
+
+            var checkout = new KhaltiCheckout(config);
+            checkout.show({
+                amount: 1000
+            })
+        }
     </script>
     <?php
     require './includes/footer.php';
