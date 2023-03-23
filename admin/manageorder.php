@@ -34,7 +34,7 @@ include '../includes/dbconn.php';
         <section class="content-header">
             <div class="container d-flex justify-content-center font">
                 <b>
-                    <h1>Manage User</h1>
+                    <h1>Manage Orders</h1>
                 </b>
             </div>
 
@@ -63,7 +63,7 @@ include '../includes/dbconn.php';
                         }
                     </script>
                     <b class="hov font">
-                        <h2 class="">All Users</h2>
+                        <h2 class="">All Orders</h2>
                     </b>
 
                     <table class="table table-hover table-bordered">

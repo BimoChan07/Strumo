@@ -90,7 +90,7 @@
 
                                 <div class="form-group mb-2">
                                     <div class="input-group mb-3">
-                                        <input type="password" class="form-control border-secondary" id="password" placeholder="Password" onfocus="toggleVisibility()" aria-label=" Recipient's username" aria-describedby="button-addon2">
+                                        <input type="password" class="form-control border-secondary" name="password" id="password" placeholder="Password" onfocus="toggleVisibility()" aria-label=" Recipient's username" aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" onclick="togglePassword()" type=" button" id="button-addon2">Show</button>
                                         </div>
